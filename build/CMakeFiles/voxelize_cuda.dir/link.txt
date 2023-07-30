@@ -1,0 +1,1 @@
+/usr/bin/c++  -std=c++11 -Wextra -Wall -Wno-deprecated-declarations -O3  -rdynamic CMakeFiles/voxelize_cuda.dir/main.cpp.o CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o CMakeFiles/voxelize_cuda.dir/src/voxelize_cuda_generated_preprocess_kernel.cu.o  -o voxelize_cuda -Wl,-rpath,/usr/local/cuda-11.1/lib64 /usr/local/cuda-11.1/lib64/libcudart.so 
