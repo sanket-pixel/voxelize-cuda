@@ -1,4 +1,4 @@
-# Install script for directory: /home/sanket/Desktop/Projects/voxelize-cuda
+# Install script for directory: /home/sanket/Desktop/Projects/Personal/voxelize-cuda
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sanket/Desktop/Projects/voxelize-cuda/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

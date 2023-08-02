@@ -34,8 +34,9 @@ set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS_RELEASE "-std=c++11 -Wextra -Wall -Wno-deprecated-declarations -O3")
 # set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} -gencode arch=compute_87,code=compute_87)
 
-
+find_package(OpenGL REQUIRED)
 find_package(CUDA REQUIRED)
+find_package(GLUT REQUIRED)
 if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
   message("Using Debug Mode")
   set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS} -g -G --ptxas-options=-v)
@@ -43,6 +44,8 @@ endif()
 
 include_directories(
   ${CUDA_INCLUDE_DIRS}
+  ${OpenGL_INCLUDE_DIRS}
+  ${GLUT_INCLUDE_DIRS}
   include
 )
 
@@ -53,3 +56,4 @@ file(GLOB_RECURSE SOURCE_FILES
 )
 
 cuda_add_executable(${PROJECT_NAME} main.cpp ${SOURCE_FILES})
+target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES}   ${GLUT_LIBRARIES})
