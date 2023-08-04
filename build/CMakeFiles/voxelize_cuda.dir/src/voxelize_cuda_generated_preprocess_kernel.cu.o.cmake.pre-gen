@@ -78,7 +78,7 @@ set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
-set(nvcc_flags -m64;--std;c++11) # list
+set(nvcc_flags -m64) # list
 set(CUDA_NVCC_INCLUDE_DIRS [==[/usr/local/cuda-11.8/include;$<TARGET_PROPERTY:voxelize_cuda,INCLUDE_DIRECTORIES>]==]) # list (needs to be in lua quotes to address backslashes)
 string(REPLACE "\\" "/" CUDA_NVCC_INCLUDE_DIRS "${CUDA_NVCC_INCLUDE_DIRS}")
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[$<TARGET_PROPERTY:voxelize_cuda,COMPILE_DEFINITIONS>]==]) # list (needs to be in lua quotes see #16510 ).
@@ -105,8 +105,8 @@ endif()
 
 # This is the list of host compilation flags.  It C or CXX should already have
 # been chosen by FindCUDA.cmake.
-set(CMAKE_HOST_FLAGS  )
-set(CMAKE_HOST_FLAGS_RELEASE  -Wextra -Wall -Wno-deprecated-declarations -O3)
+set(CMAKE_HOST_FLAGS   )
+set(CMAKE_HOST_FLAGS_RELEASE -std=c++14 -Wextra -Wall -Wno-deprecated-declarations -O3)
 set(CMAKE_HOST_FLAGS_DEBUG -g)
 set(CMAKE_HOST_FLAGS_MINSIZEREL -Os -DNDEBUG)
 set(CMAKE_HOST_FLAGS_RELWITHDEBINFO -O2 -g -DNDEBUG)

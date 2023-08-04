@@ -7,11 +7,13 @@
 #include <dirent.h>
 #include "common.h"
 #include "preprocess.h"
-#include <GL/glut.h> 
+#include "visualizer.hpp"
 #include <vector>
+#include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
+#include <pcl/visualization/cloud_viewer.h>
+#include <cuda_fp16.h>
 
-std::vector<std::tuple<float, float, float>> input_points;
-float rotation_angle = 0.0f;
 void GetDeviceInfo()
 {
     cudaDeviceProp prop;
@@ -116,44 +118,8 @@ static void help()
     exit(EXIT_SUCCESS);
 }
 
-// Function to draw points in OpenGL
-void drawPoints(const std::vector<std::tuple<float, float, float>>& points, float r, float g, float b) {
-    glPointSize(2.0f);
-    glBegin(GL_POINTS);
-    glColor3f(r, g, b);
-    for (const auto& p : points) {
-        glVertex3f(std::get<0>(p), std::get<1>(p), std::get<2>(p));
-    }
-    glEnd();
-}
 
-// Function to display the points in OpenGL
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
 
-    // Apply rotation to the scene
-    glRotatef(rotation_angle, 0.0f, 1.0f, 0.0f);
-
-    // Draw the original points in blue
-    drawPoints(input_points, 0.0f, 0.0f, 1.0f);
-
-    // Draw the voxelized points in red
-    // drawPoints(voxel_points, 1.0f, 0.0f, 0.0f);
-
-    glutSwapBuffers();
-}
-void specialKeys(int key, int x, int y) {
-    switch (key) {
-        case GLUT_KEY_LEFT:
-            rotation_angle -= 5.0f;
-            break;
-        case GLUT_KEY_RIGHT:
-            rotation_angle += 5.0f;
-            break;
-    }
-    glutPostRedisplay(); // Request a redraw of the scene
-}
 
 int main(int argc, const char **argv)
 {
@@ -162,10 +128,18 @@ int main(int argc, const char **argv)
 
     const char *value = nullptr;
     bool verbose = false;
+    bool visualize = false;
+    bool cpu=false;
     for (int i = 2; i < argc; ++i) {
         if (startswith(argv[i], "--verbose", &value)) {
             verbose = true;
-        } else {
+        } else if(startswith(argv[i], "--visualize", &value)){
+            visualize = true;
+        }
+        else if(startswith(argv[i], "--cpu", &value)){
+            cpu = true;
+        }
+        else{
             help();
         }
     }
@@ -206,33 +180,16 @@ int main(int argc, const char **argv)
         loadData(dataFile.c_str() , &pc_data, &length);
         size_t points_num = length / (params.feature_num * sizeof(float)) ;
         std::cout << "find points num: " << points_num << std::endl;
-
-        // Convert pc_data to vector of 3D points
-        float* points_data = static_cast<float*>(pc_data);
-        input_points.clear();
-        for (size_t i = 0; i < points_num; ++i) {
-            float x = points_data[i * params.feature_num];
-            float y = points_data[i * params.feature_num + 1];
-            float z = points_data[i * params.feature_num + 2];
-            input_points.emplace_back(x, y, z);
+        
+        float* point_data = static_cast<float*>(pc_data);
+        if (visualize){
+            Visualizer point_cloud_visualizer("Point Cloud Viewer", points_num, point_data, params.feature_num);
+            point_cloud_visualizer.initialize();
+            point_cloud_visualizer.populate_cloud();
+            point_cloud_visualizer.show_cloud();
         }
 
-        // Free the allocated memory
-        delete[] points_data;
-         // Initialize OpenGL window
-        glutInit(&argc, const_cast<char **>(argv));
-        glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-        glutInitWindowSize(800, 600);
-        glutCreateWindow("Input Points Visualization");
-
-        // Set up the OpenGL callbacks
-        glutDisplayFunc(display);
-        glutSpecialFunc(specialKeys);
-        glEnable(GL_DEPTH_TEST);
-
-        // Enter the main loop
-        glutMainLoop();
-
+        
         checkCudaErrors(cudaMemcpy(d_points, pc_data, length, cudaMemcpyHostToDevice));
 
         pre_->generateVoxels((float *)d_points, points_num, stream);
@@ -242,14 +199,22 @@ int main(int argc, const char **argv)
         unsigned int* h_voxel_indices = new unsigned int[valid_num * 4];
         checkCudaErrors(cudaMemcpy(h_voxel_features, d_voxel_features, valid_num * params.feature_num * sizeof(half), cudaMemcpyDeviceToHost));
         checkCudaErrors(cudaMemcpy(h_voxel_indices, d_voxel_indices, valid_num * 4 * sizeof(unsigned int), cudaMemcpyDeviceToHost));
-        std::vector<std::tuple<float, float, float>> voxel_points;
-        for (int i = 0; i < valid_num; ++i) {
-            int offset = i * params.feature_num; // Assuming each voxel has 3D coordinates (x, y, z) as features
-            float x = static_cast<float>(h_voxel_features[offset]);
-            float y = static_cast<float>(h_voxel_features[offset + 1]);
-            float z = static_cast<float>(h_voxel_features[offset + 2]);
-            voxel_points.emplace_back(x, y, z);
+
+        
+        float* h_float_array = new float[valid_num * params.feature_num];
+        // Convert the half array to float array element by element
+        for (size_t i = 0; i < valid_num; ++i) {
+            h_float_array[i] = __half2float(h_voxel_features[i]);
         }
+
+        if (visualize){
+            Visualizer voxel_visualizer("Voxel Cloud Viewer", valid_num, h_float_array, params.feature_num);
+            voxel_visualizer.initialize();
+            voxel_visualizer.populate_cloud();
+            voxel_visualizer.show_cloud();
+        }
+
+
 
         std::cout << "voxel count : " << valid_num << std::endl;
         std::cout << ">>>>>>>>>>>" <<std::endl;

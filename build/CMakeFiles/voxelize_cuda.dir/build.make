@@ -381,10 +381,24 @@ CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/preprocess.cpp -o CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.s
 
+CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o: CMakeFiles/voxelize_cuda.dir/flags.make
+CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o: ../src/visualizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o -c /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/visualizer.cpp
+
+CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/visualizer.cpp > CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.i
+
+CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/visualizer.cpp -o CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.s
+
 # Object files for target voxelize_cuda
 voxelize_cuda_OBJECTS = \
 "CMakeFiles/voxelize_cuda.dir/main.cpp.o" \
-"CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o"
+"CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o" \
+"CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
 
 # External object files for target voxelize_cuda
 voxelize_cuda_EXTERNAL_OBJECTS = \
@@ -392,17 +406,104 @@ voxelize_cuda_EXTERNAL_OBJECTS = \
 
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/main.cpp.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o
+voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/voxelize_cuda_generated_preprocess_kernel.cu.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/build.make
 voxelize_cuda: /usr/local/cuda-11.8/lib64/libcudart_static.a
 voxelize_cuda: /usr/lib/x86_64-linux-gnu/librt.so
-voxelize_cuda: /usr/lib/x86_64-linux-gnu/libGL.so
-voxelize_cuda: /usr/lib/x86_64-linux-gnu/libGLU.so
-voxelize_cuda: /usr/lib/x86_64-linux-gnu/libglut.so
-voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXmu.so
-voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXi.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_apps.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_people.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libboost_system.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libboost_iostreams.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libqhull.so
+voxelize_cuda: /usr/lib/libOpenNI.so
+voxelize_cuda: /usr/lib/libOpenNI2.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkChartsCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkInfovisCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libfreetype.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libz.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libjpeg.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpng.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libtiff.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libexpat.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOGeometry-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOLegacy-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOPLY-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingLOD-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkViewsContext2D-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkViewsCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingContextOpenGL2-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingOpenGL2-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libflann_cpp.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_surface.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_registration.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_features.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_filters.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_ml.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_search.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_io.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_octree.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libpcl_common.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkInteractionWidgets-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersModeling-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkInteractionStyle-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersExtraction-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersStatistics-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingFourier-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkalglib-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersHybrid-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingGeneral-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingSources-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingHybrid-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingAnnotation-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingColor-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingVolume-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOXML-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOXMLParser-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingContext2D-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingFreeType-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libfreetype.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkImagingCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkRenderingCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonColor-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersGeometry-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersSources-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersGeneral-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonComputationalGeometry-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkFiltersCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkIOImage-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonExecutionModel-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonDataModel-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonTransforms-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonMisc-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonMath-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonSystem-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkCommonCore-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtksys-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkDICOMParser-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libvtkmetaio-7.1.so.7.1p.1
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libz.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libGLEW.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libSM.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libICE.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libX11.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXext.so
+voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXt.so
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable voxelize_cuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable voxelize_cuda"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/voxelize_cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -177,6 +177,33 @@ src/preprocess.cpp.s:
 	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.s
 .PHONY : src/preprocess.cpp.s
 
+src/visualizer.o: src/visualizer.cpp.o
+
+.PHONY : src/visualizer.o
+
+# target to build an object file
+src/visualizer.cpp.o:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o
+.PHONY : src/visualizer.cpp.o
+
+src/visualizer.i: src/visualizer.cpp.i
+
+.PHONY : src/visualizer.i
+
+# target to preprocess a source file
+src/visualizer.cpp.i:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.i
+.PHONY : src/visualizer.cpp.i
+
+src/visualizer.s: src/visualizer.cpp.s
+
+.PHONY : src/visualizer.s
+
+# target to generate assembly for a file
+src/visualizer.cpp.s:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.s
+.PHONY : src/visualizer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +219,9 @@ help:
 	@echo "... src/preprocess.o"
 	@echo "... src/preprocess.i"
 	@echo "... src/preprocess.s"
+	@echo "... src/visualizer.o"
+	@echo "... src/visualizer.i"
+	@echo "... src/visualizer.s"
 .PHONY : help
 
 
