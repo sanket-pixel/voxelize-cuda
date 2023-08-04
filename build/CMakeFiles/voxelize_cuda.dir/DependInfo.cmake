@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/main.cpp" "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles/voxelize_cuda.dir/main.cpp.o"
+  "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/VoxelizerCPU.cpp" "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o"
   "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/preprocess.cpp" "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o"
   "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/visualizer.cpp" "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
   )

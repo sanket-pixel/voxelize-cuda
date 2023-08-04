@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include "common.h"
 #include "preprocess.h"
+#include "VoxelizerCPU.hpp"
 #include "visualizer.hpp"
 #include <vector>
 #include <pcl/io/pcd_io.h>
@@ -182,7 +183,21 @@ int main(int argc, const char **argv)
         std::cout << "find points num: " << points_num << std::endl;
         
         float* point_data = static_cast<float*>(pc_data);
+        if (cpu) {
+            // Create the VoxelizerCPU object
+            VoxelizerCPU voxelizer;
+
+            // Measure CPU voxelization time
+            auto start_cpu_voxel = std::chrono::high_resolution_clock::now();
+            std::vector<Voxel> voxels = voxelizer.voxelization(point_data, points_num);
+            std::vector<std::array<float, 4>> voxel_features = voxelizer.calculateVoxelFeatures(voxels);
+            auto end_cpu_voxel = std::chrono::high_resolution_clock::now();
+            std::chrono::duration<double, std::milli> cpu_voxel_time = end_cpu_voxel - start_cpu_voxel;
+            std::cout << "Voxelization (CPU) : " << cpu_voxel_time.count() << " ms" << std::endl;
+            std::cout << "Voxel Count (CPU): " << voxels.size() << std::endl;
+        }
         if (visualize){
+
             Visualizer point_cloud_visualizer("Point Cloud Viewer", points_num, point_data, params.feature_num);
             point_cloud_visualizer.initialize();
             point_cloud_visualizer.populate_cloud();
@@ -191,23 +206,25 @@ int main(int argc, const char **argv)
 
         
         checkCudaErrors(cudaMemcpy(d_points, pc_data, length, cudaMemcpyHostToDevice));
-
+        auto start_gpu_voxel = std::chrono::high_resolution_clock::now();
         pre_->generateVoxels((float *)d_points, points_num, stream);
-
         unsigned int valid_num = pre_->getOutput(&d_voxel_features, &d_voxel_indices, sparse_shape);
         half* h_voxel_features = new half[valid_num * params.feature_num];
         unsigned int* h_voxel_indices = new unsigned int[valid_num * 4];
         checkCudaErrors(cudaMemcpy(h_voxel_features, d_voxel_features, valid_num * params.feature_num * sizeof(half), cudaMemcpyDeviceToHost));
         checkCudaErrors(cudaMemcpy(h_voxel_indices, d_voxel_indices, valid_num * 4 * sizeof(unsigned int), cudaMemcpyDeviceToHost));
-
         
-        float* h_float_array = new float[valid_num * params.feature_num];
-        // Convert the half array to float array element by element
-        for (size_t i = 0; i < valid_num; ++i) {
-            h_float_array[i] = __half2float(h_voxel_features[i]);
-        }
-
+        auto end_gpu_voxel = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> gpu_voxel_time = end_gpu_voxel - start_gpu_voxel;
+        std::cout << "Voxelization (GPU) : " << gpu_voxel_time.count() << " ms" << std::endl;    
+       
         if (visualize){
+            float* h_float_array = new float[valid_num * params.feature_num];
+            // Convert the half array to float array element by element
+            for (size_t i = 0; i < valid_num; ++i) {
+                h_float_array[i] = __half2float(h_voxel_features[i]);
+            }
+
             Visualizer voxel_visualizer("Voxel Cloud Viewer", valid_num, h_float_array, params.feature_num);
             voxel_visualizer.initialize();
             voxel_visualizer.populate_cloud();

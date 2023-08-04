@@ -35,7 +35,7 @@ class Params
     const unsigned int task_num_stride[NUM_TASKS] = { 0, 1, 3, 5, 6, 8, };
 
     const float out_size_factor = 8;
-    const float voxel_size[2] = { 0.2, 0.2, };
+    const float voxel_size[2] = { 0.075, 0.075, };
     const float pc_range[2] = { -54, -54, };
     const float score_threshold = 0.1;
     const float post_center_range[6] = { -61.2, -61.2, -10.0, 61.2, 61.2, 10.0, };
@@ -48,10 +48,10 @@ class Params
     const float max_z_range = 3.0;
     
     // the size of a pillar
-    const float pillar_x_size = 0.2;
-    const float pillar_y_size = 0.2;
+    const float pillar_x_size = 0.075;
+    const float pillar_y_size = 0.075;
     const float pillar_z_size = 0.2;
-    const int max_points_per_voxel = 2;
+    const int max_points_per_voxel = 10;
 
     const unsigned int max_voxels = 160000;
     const unsigned int feature_num = 5;

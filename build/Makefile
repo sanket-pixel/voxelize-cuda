@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/VoxelizerCPU.o: src/VoxelizerCPU.cpp.o
+
+.PHONY : src/VoxelizerCPU.o
+
+# target to build an object file
+src/VoxelizerCPU.cpp.o:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o
+.PHONY : src/VoxelizerCPU.cpp.o
+
+src/VoxelizerCPU.i: src/VoxelizerCPU.cpp.i
+
+.PHONY : src/VoxelizerCPU.i
+
+# target to preprocess a source file
+src/VoxelizerCPU.cpp.i:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.i
+.PHONY : src/VoxelizerCPU.cpp.i
+
+src/VoxelizerCPU.s: src/VoxelizerCPU.cpp.s
+
+.PHONY : src/VoxelizerCPU.s
+
+# target to generate assembly for a file
+src/VoxelizerCPU.cpp.s:
+	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.s
+.PHONY : src/VoxelizerCPU.cpp.s
+
 src/preprocess.o: src/preprocess.cpp.o
 
 .PHONY : src/preprocess.o
@@ -216,6 +243,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/VoxelizerCPU.o"
+	@echo "... src/VoxelizerCPU.i"
+	@echo "... src/VoxelizerCPU.s"
 	@echo "... src/preprocess.o"
 	@echo "... src/preprocess.i"
 	@echo "... src/preprocess.s"

@@ -74,12 +74,12 @@ clean: CMakeFiles/voxelize_cuda.dir/clean
 CMakeFiles/voxelize_cuda.dir/all:
 	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/depend
 	$(MAKE) -f CMakeFiles/voxelize_cuda.dir/build.make CMakeFiles/voxelize_cuda.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target voxelize_cuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target voxelize_cuda"
 .PHONY : CMakeFiles/voxelize_cuda.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/voxelize_cuda.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/voxelize_cuda.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles 0
 .PHONY : CMakeFiles/voxelize_cuda.dir/rule

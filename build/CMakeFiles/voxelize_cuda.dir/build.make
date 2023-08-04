@@ -368,9 +368,22 @@ CMakeFiles/voxelize_cuda.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxelize_cuda.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sanket/Desktop/Projects/Personal/voxelize-cuda/main.cpp -o CMakeFiles/voxelize_cuda.dir/main.cpp.s
 
+CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o: CMakeFiles/voxelize_cuda.dir/flags.make
+CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o: ../src/VoxelizerCPU.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o -c /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/VoxelizerCPU.cpp
+
+CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/VoxelizerCPU.cpp > CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.i
+
+CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/VoxelizerCPU.cpp -o CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.s
+
 CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o: CMakeFiles/voxelize_cuda.dir/flags.make
 CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o: ../src/preprocess.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o -c /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/preprocess.cpp
 
 CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.i: cmake_force
@@ -383,7 +396,7 @@ CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.s: cmake_force
 
 CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o: CMakeFiles/voxelize_cuda.dir/flags.make
 CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o: ../src/visualizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o -c /home/sanket/Desktop/Projects/Personal/voxelize-cuda/src/visualizer.cpp
 
 CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.i: cmake_force
@@ -397,6 +410,7 @@ CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.s: cmake_force
 # Object files for target voxelize_cuda
 voxelize_cuda_OBJECTS = \
 "CMakeFiles/voxelize_cuda.dir/main.cpp.o" \
+"CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o" \
 "CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o" \
 "CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o"
 
@@ -405,6 +419,7 @@ voxelize_cuda_EXTERNAL_OBJECTS = \
 "/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles/voxelize_cuda.dir/src/voxelize_cuda_generated_preprocess_kernel.cu.o"
 
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/main.cpp.o
+voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/VoxelizerCPU.cpp.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/preprocess.cpp.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/visualizer.cpp.o
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/src/voxelize_cuda_generated_preprocess_kernel.cu.o
@@ -503,7 +518,7 @@ voxelize_cuda: /usr/lib/x86_64-linux-gnu/libX11.so
 voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXext.so
 voxelize_cuda: /usr/lib/x86_64-linux-gnu/libXt.so
 voxelize_cuda: CMakeFiles/voxelize_cuda.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable voxelize_cuda"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sanket/Desktop/Projects/Personal/voxelize-cuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable voxelize_cuda"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/voxelize_cuda.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
