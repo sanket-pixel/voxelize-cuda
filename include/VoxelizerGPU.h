@@ -23,7 +23,7 @@
  
 #include "kernel.h"
 
-class PreProcessCuda {
+class VoxelizerGPU {
   private:
     Params params_;
     unsigned int *point2voxel_offset_;
@@ -43,8 +43,8 @@ class PreProcessCuda {
     unsigned int voxel_num_size_;
 
   public:
-    PreProcessCuda();
-    ~PreProcessCuda();
+    VoxelizerGPU();
+    ~VoxelizerGPU();
 
     int alloc_resource();
     int generateVoxels(const float *points, size_t points_size, cudaStream_t stream);

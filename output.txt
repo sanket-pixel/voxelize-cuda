@@ -1,0 +1,17 @@
+GPU has cuda devices: 1
+----device id: 0 info----
+  GPU : GeForce RTX 2060 
+  Capbility: 7.5
+  Global memory: 5912MB
+  Const memory: 64KB
+  SM in a block: 48KB
+  warp size: 32
+  threads in a block: 1024
+  block dim: (1024,1024,64)
+  grid dim: (2147483647,65535,65535)
+-------------------------
+
+Total 268
+Average GPU Voxelization Time : 0.643269
+Average CPU Voxelization Time : 374.432
+Average GPU vs CPU Speedup : 582.076x times 

@@ -27,7 +27,7 @@
 #include "common.h"
 
 const int NMS_THREADS_PER_BLOCK = sizeof(uint64_t) * 8;
-const int THREADS_FOR_VOXEL = 256;
+const int THREADS_FOR_VOXEL = 28;
 
 #define DIVUP(x, y) (x + y - 1) / y
 

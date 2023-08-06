@@ -1,11 +1,11 @@
-#include "preprocess.h"
+#include "VoxelizerGPU.h"
 #include <assert.h>
 #include <iostream>
 
-PreProcessCuda::PreProcessCuda()
+VoxelizerGPU::VoxelizerGPU()
 {}
 
-PreProcessCuda::~PreProcessCuda()
+VoxelizerGPU::~VoxelizerGPU()
 {
     checkCudaErrors(cudaFree(hash_table_));
     checkCudaErrors(cudaFree(voxels_temp_));
@@ -18,7 +18,7 @@ PreProcessCuda::~PreProcessCuda()
     checkCudaErrors(cudaFreeHost(h_real_num_voxels_));
 }
 
-unsigned int PreProcessCuda::getOutput(half** d_voxel_features, unsigned int** d_voxel_indices, std::vector<int>& sparse_shape){
+unsigned int VoxelizerGPU::getOutput(half** d_voxel_features, unsigned int** d_voxel_indices, std::vector<int>& sparse_shape){
     *d_voxel_features = d_voxel_features_;
     *d_voxel_indices = d_voxel_indices_;
 
@@ -30,7 +30,7 @@ unsigned int PreProcessCuda::getOutput(half** d_voxel_features, unsigned int** d
     return *h_real_num_voxels_;
 }
 
-int PreProcessCuda::alloc_resource(){
+int VoxelizerGPU::alloc_resource(){
     hash_table_size_ = MAX_POINTS_NUM * 2 * 2 * sizeof(unsigned int);
 
     voxels_temp_size_ = params_.max_voxels * params_.max_points_per_voxel * params_.feature_num * sizeof(float);
@@ -56,7 +56,7 @@ int PreProcessCuda::alloc_resource(){
     return 0;
 }
 
-int PreProcessCuda::generateVoxels(const float *points, size_t points_size, cudaStream_t stream)
+int VoxelizerGPU::generateVoxels(const float *points, size_t points_size, cudaStream_t stream)
 {
     // flash memory for every run 
     checkCudaErrors(cudaMemsetAsync(hash_table_, 0xff, hash_table_size_, stream));

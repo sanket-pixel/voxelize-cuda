@@ -1,7 +1,14 @@
 #include "visualizer.hpp"
+#include <chrono>
+#include <thread>
 
-Visualizer::Visualizer(const std::string& id, int num_points, float* data, int dim)
-    : id(id), num_points(num_points), data(data), dim(dim) {}
+
+
+Visualizer::Visualizer(const std::string& id, int dim)
+    : id(id), dim(dim) {
+            viewer.reset(new pcl::visualization::PCLVisualizer(id));
+
+    }
 
 Visualizer::~Visualizer(){
 
@@ -9,7 +16,7 @@ Visualizer::~Visualizer(){
 
 void Visualizer::initialize() {
     cloud.reset(new pcl::PointCloud<pcl::PointXYZI>);
-    viewer.reset(new pcl::visualization::CloudViewer(id));
+
 }
 
 void Visualizer::populate_cloud() {
@@ -28,8 +35,18 @@ void Visualizer::populate_cloud() {
 }
 
 void Visualizer::show_cloud(){
+        // viewer->showCloud(cloud);
+        pcl::visualization::PointCloudColorHandlerGenericField<pcl::PointXYZI> intensity_color_handler(cloud, "intensity");
 
-    viewer->showCloud(cloud);
-    while (!viewer->wasStopped()) {}
+        viewer->addPointCloud<pcl::PointXYZI>(cloud, intensity_color_handler, "cloud");
 
+        // Update the viewer
+        viewer->spinOnce(100); // Show the point cloud for 10 milliseconds
+
+        // Remove the point cloud from the viewer
+        viewer->removePointCloud("cloud");
+
+        // viewer->close();
+        
 }
+
